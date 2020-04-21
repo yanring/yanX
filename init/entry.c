@@ -17,30 +17,17 @@
  */
 
 #include "types.h"
+#include "common.h"
+#include "console.h"
 
 int kern_entry()
 {
-	uint8_t *input = (uint8_t *)0xB8000;
-	uint8_t color = (0 << 3) | (13 & 0x0F);
+	console_clear();
+    console_write("Hello, OS kernel!\n");
+    console_write_color("Hello, yanX OS kernel!\n", rc_black, rc_green);
+    console_write_dec(20, rc_black, rc_green);
+    console_write_hex(20, rc_black, rc_green);
+    return 0;
 
-	*input++ = 'H'; *input++ = color;
-	*input++ = 'e'; *input++ = color;
-	*input++ = 'l'; *input++ = color;
-	*input++ = 'l'; *input++ = color;
-	*input++ = 'o'; *input++ = color;
-	*input++ = ','; *input++ = color;
-	*input++ = ' '; *input++ = color;
-	*input++ = 'O'; *input++ = color;
-	*input++ = 'S'; *input++ = color;
-	*input++ = ' '; *input++ = color;
-	*input++ = 'K'; *input++ = color;
-	*input++ = 'e'; *input++ = color;
-	*input++ = 'r'; *input++ = color;
-	*input++ = 'n'; *input++ = color;
-	*input++ = 'e'; *input++ = color;
-	*input++ = 'l'; *input++ = color;
-	*input++ = '!'; *input++ = color;
-
-	return 0;
 }
 
